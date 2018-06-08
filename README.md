@@ -5,6 +5,8 @@
 * Frontend lovingly stolen from Sarah Drasner (https://codepen.io/sdras/pen/dZOdpv), [object File] bug included.
 * Code contributions into frontend by [Radu Matei](https://github.com/radu-matei).
 
+Docker Hub: https://hub.docker.com/r/adcaline/yolovision/
+
 To call the API directly look at the `PUT /images` request in Chrome Dev Tools under Network.
 
 This builds without GPU support but with OpenMP (which brings nothing but false hopes and promises).
