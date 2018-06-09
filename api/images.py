@@ -39,8 +39,6 @@ class Resource(object):
 
                 image_file.write(chunk)
 
-        # Here comes the detection step,
-        # Fuggedaboutit.
         print('[DEBUG] Running image through darknet...')
         print('--------------------------')
         print('image_path =', str(image_path))

@@ -1,5 +1,3 @@
-# Python 3 only.
-
 from ctypes import *
 import random
 from colorama import Fore, Back, Style

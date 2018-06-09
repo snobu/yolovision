@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import sys, os
 import darknet as dn
 import simplejson as json
@@ -13,6 +11,3 @@ def detect(filename, outfile):
 dn.set_gpu(0)
 net = dn.load_net(b"libdarknet/yolov3.cfg", b"libdarknet/yolov3.weights", 0)
 meta = dn.load_meta(b"libdarknet/coco.data")
-
-#call it like this:
-#detect(b'image.jpg', 'out')

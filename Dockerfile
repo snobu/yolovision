@@ -36,6 +36,6 @@ RUN echo Downloading weights.. && curl -s -o /app/api/libdarknet/yolov3.weights 
     http://yolovision.blob.core.windows.net/weights/yolov3.weights
 
 WORKDIR /app/api
-CMD gunicorn app:api -b 0.0.0.0
+CMD gunicorn app:api -b 0.0.0.0 2>&1
 
 EXPOSE 8000
