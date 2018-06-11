@@ -79,7 +79,7 @@ new Vue({
     },
   
     useMine: function useMine() {
-      this.image = "/elephant.jpg";
+      this.image = 'https://yolovision.blob.core.windows.net/samples/roads-india.jpggggggggg';
       this.detect();
     },
 

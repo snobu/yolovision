@@ -25,13 +25,17 @@ class Resource(object):
         if req.content_type == 'application/json':
             # Fetch URL
             body = json.load(req.stream)
+            # assuming jpg but we should detect the right thing
+            # from the content-type coming back from urllib
             image_path = os.path.join(self._upload_path, str(session_id) + '.jpg')
             try:
                 with io.open(image_path, 'wb') as image_file:
-                    image_file.write(request.urlopen(body.url).read())
+                    image_file.write(request.urlopen(body['url']).read())
             except Exception as e:
+                print(e)
                 resp.status = falcon.HTTP_400
-                resp.body = '"error:" "{message}"'.format(message=e)
+                resp.body = '"error" : "{message}"'.format(message=e)
+        
         else:
             # Because Python's mimetypes insists on being silly
             if ext == '.jpe': ext = '.jpg'
