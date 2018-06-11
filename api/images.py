@@ -18,20 +18,21 @@ class Resource(object):
 
     def on_post(self, req, resp):
         session_id = uuid.uuid4()
+        ext = mimetypes.guess_extension(req.content_type, strict=True)
         name = '{session_id}{ext}'.format(session_id=session_id, ext=ext)
         image_path = os.path.join(self._upload_path, name)
 
         if req.content_type == 'application/json':
             # Fetch URL
             body = json.load(req.stream)
+            image_path = os.path.join(self._upload_path, str(session_id) + '.jpg')
             try:
                 with io.open(image_path, 'wb') as image_file:
                     image_file.write(request.urlopen(body.url).read())
             except Exception as e:
-                resp.status = resp.HTTP_417 # Expectation failed
+                resp.status = falcon.HTTP_400
                 resp.body = '"error:" "{message}"'.format(message=e)
         else:
-            ext = mimetypes.guess_extension(req.content_type, strict=True)
             # Because Python's mimetypes insists on being silly
             if ext == '.jpe': ext = '.jpg'
             print('\n[DEBUG] GUESSED EXTENSION FROM MIME TYPE: ', ext)
