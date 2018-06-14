@@ -8,10 +8,11 @@ COPY api/data/ /app/data
 COPY api/libdarknet/ /app/api/libdarknet
 COPY frontend/ /app/frontend
 
-RUN ls -lR /app | grep -v png
-
 COPY LICENSE /app/
 COPY Makefile.patch /app/
+
+# CHECK IF WE HAVE A GPU
+# CUDA Toolkit: https://yolovision.blob.core.windows.net/cuda/cuda-repo-ubuntu1604-9-2-local_9.2.88-1_amd64.deb
 
 RUN git clone --depth 1 https://github.com/pjreddie/darknet
 WORKDIR darknet
