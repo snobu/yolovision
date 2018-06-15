@@ -12,6 +12,9 @@ COPY LICENSE /app/
 COPY Makefile.patch /app/
 
 # CHECK IF WE HAVE A GPU
+#    RUN apt update && apt install lshw -yy
+#    RUN lshw -c display | grep -i NVIDIA && touch GPUFLAG || echo "===== NO GPU ====="
+#    RUN echo AFTER lshw; ls -l GPUFLAG
 # CUDA Toolkit: https://yolovision.blob.core.windows.net/cuda/cuda-repo-ubuntu1604-9-2-local_9.2.88-1_amd64.deb
 
 RUN git clone --depth 1 https://github.com/pjreddie/darknet
